@@ -24,7 +24,7 @@
           alert(err);
         })
         .then(function(){
-          $location.path('user-profile');
+          $location.path('profile');
         });
     };
 

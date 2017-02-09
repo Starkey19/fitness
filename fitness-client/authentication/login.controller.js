@@ -3,7 +3,7 @@
   angular
   .module('fitness')
   .controller('loginCtrl', loginCtrl);
-  
+
 //TODO VALIDATE INPUTS
 
   loginCtrl.$inject = ['$location', 'authentication'];
@@ -22,7 +22,7 @@
           alert(err);
         })
         .then(function(){
-          $location.path('user-profile');
+          $location.path('profile');
         });
     };
 

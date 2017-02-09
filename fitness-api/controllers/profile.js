@@ -9,9 +9,10 @@ module.exports.profileRead = function(req, res) {
       "message" : "You are not authorized to access this page"
     });
   } else {
-    User.findById(req.payload._id)
-    .exec(function(err, user) {
-      res.status(200).json(user);
+    User
+      .findById(req.payload._id)
+      .exec(function(err, user) {
+        res.status(200).json(user);
     });
   }
   

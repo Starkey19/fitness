@@ -11,3 +11,5 @@ mongoose.connect(dbURI)
 mongoose.connection.on('error', function(err) {
   console.log('Mongoose connection error: ' + err);
 });
+
+require('./user');

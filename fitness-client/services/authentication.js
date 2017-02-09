@@ -6,11 +6,11 @@
 
     authentication.$inject = ['$http', '$window'];
 
-    function authentication ($http, %window) {
+    function authentication ($http, $window) {
 
       //Saves a token to localStorage
       var saveToken = function (token) {
-        $window.localStorage['mean-token' = token;
+        $window.localStorage['mean-token'] = token;
       };
 
       //Get JWT from localStorage
@@ -26,17 +26,20 @@
       //Check if a user is logged in by looking for their token
       var isLoggedIn = function() {
         var token = getToken();
+
         var payload;
 
         //Split token into header, payload and signature to get payload
-        if(token){
+        if (typeof token === 'undefined'){
+          return false;
+        } else {
           payload = token.split('.')[1];
+
           payload = $window.atob(payload);
+        
           payload = JSON.parse(payload);
 
           return payload.exp > Date.now() / 1000;
-        } else {
-          return false;
         }
       };
 
@@ -46,6 +49,8 @@
           var payload = token.split('.')[1];
           payload = $window.atob(payload);
           payload = JSON.parse(payload);
+          console.log("email: " + payload.email);
+          console.log("name: " + payload.name);
           return {
             email : payload.email,
             name : payload.name
@@ -62,6 +67,7 @@
 
       login = function(user) {
         return $http.post('/api/login', user).success(function(data) {
+          console.log(data.token);
           saveToken(data.token);
         });
       };
