@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var http = require('http');
 //var favicon = require('serve-favicon');
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -42,6 +43,10 @@ app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'fitness-client', 'index.html'));
 });
 
+// var server = http.createServer(app);
+//
+// server.listen(3000);
+// console.log('Express server started on port %s', server.address().port);
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -81,6 +86,5 @@ app.use(function(req, res) {
 //         error: {}
 //     });
 // });
-console.log("port: " + app.address().port);
 
 module.exports = app;

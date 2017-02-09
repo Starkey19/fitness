@@ -5,22 +5,22 @@
   function config ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'home/home.view.html',
+        templateUrl: 'homepage/home.view.html',
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
       .when('/register', {
-        templateUrl: '/auth/register/register.view.html',
+        templateUrl: '/authentication/register.view.html',
         controller: 'registerCtrl',
         controllerAs: 'vm'
       })
       .when('/login', {
-        templateUrl: '/auth/login/login.view.html',
+        templateUrl: '/authentication/login.view.html',
         controller: 'loginCtrl',
         controllerAs: 'vm'
       })
       .when('/profile', {
-        templateUrl: '/profile/profile.view.html',
+        templateUrl: '/user-profile/profile.view.html',
         controller: 'profileCtrl',
         controllerAs: 'vm'
         //TODO NEW PAGES HERE
@@ -39,7 +39,7 @@
       }
     });
   }
-  
+
   angular
     .module('fitness')
     .config(['$routeProvider', '$locationProvider', config])
